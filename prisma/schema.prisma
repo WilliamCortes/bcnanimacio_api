@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Artist {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  category   String
+  isFeatured Boolean  @default(false)
+  sortOrder  Int      @default(0)
+
+  nameCa String
+  nameEs String
+  nameEn String
+  bioCa  String @db.Text
+  bioEs  String @db.Text
+  bioEn  String @db.Text
+
+  imageUrl   String?
+  videoUrl   String?
+  websiteUrl String?
+  youtubeIds String[]
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+  @@index([category])
+}
+
+model Client {
+  id        String   @id @default(cuid())
+  name      String
+  logoUrl   String?
+  sector    String
+  websiteUrl String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([sector])
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  eventType String
+  eventDate String?
+  guests    Int?
+  message   String   @db.Text
+  language  String
+  createdAt DateTime @default(now())
+}
+
