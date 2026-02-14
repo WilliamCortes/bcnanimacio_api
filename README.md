@@ -29,17 +29,12 @@ The project follows **Clean Architecture**:
 
 ### Installation
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root of `backend/` (see Configuration below).
+2. Create a `.env` file in the root directory (see Configuration below).
 
 ### Running the Project
 
